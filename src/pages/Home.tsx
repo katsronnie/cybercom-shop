@@ -1,9 +1,6 @@
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
 
 function Home() {
-  const [currentSlide, setCurrentSlide] = useState(0)
-
   const categories = [
     { 
       icon: (

@@ -215,40 +215,6 @@ function Home() {
         </div>
       </section>
 
-      {/* Category Grid */}
-      <section className="py-12 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Shop by Category</h2>
-            <p className="text-slate-600 max-w-2xl mx-auto">
-              Explore our curated collection of premium tech products across all categories
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-4">
-            {categories.map((category, index) => (
-              <Link
-                key={index}
-                to="/products"
-                className="group relative"
-              >
-                <div className="flex flex-col items-center p-4 rounded-2xl hover:bg-slate-50 transition-all duration-300 hover:-translate-y-1">
-                  <div className="relative mb-3">
-                    <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/0 to-blue-500/0 group-hover:from-cyan-500/10 group-hover:to-blue-500/10 rounded-full blur transition-all duration-300"></div>
-                    <div className="relative w-14 h-14 rounded-full bg-gradient-to-br from-slate-100 to-white border border-slate-200 group-hover:border-cyan-200 group-hover:from-cyan-50 group-hover:to-white flex items-center justify-center text-slate-700 group-hover:text-cyan-600 transition-all duration-300 shadow-sm">
-                      {category.icon}
-                    </div>
-                  </div>
-                  <span className="text-xs font-medium text-slate-700 group-hover:text-cyan-600 text-center leading-tight transition-colors">
-                    {category.title}
-                  </span>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Today's Featured Deals - Updated with SVG icons */}
       <section className="py-16 bg-gradient-to-b from-slate-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

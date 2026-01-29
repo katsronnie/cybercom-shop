@@ -2,8 +2,10 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import { useState } from 'react'
 import Home from './pages/Home'
 import Products from './pages/Products'
+import ProductDetail from './pages/ProductDetail'
 import Cart from './pages/Cart'
 import Location from './pages/Location'
+import Services from './pages/Services'
 
 export interface Product {
   id: number
@@ -116,10 +118,10 @@ function App() {
               
               {/* Navigation */}
               <nav className="hidden md:flex space-x-1">
-                {['Home', 'Shop', 'Categories', 'Pages', 'Blog', 'Contact'].map((item, index) => (
+                {['Home', 'Shop', 'Services', 'Pages', 'Blog', 'Contact'].map((item, index) => (
                   <Link 
                     key={index}
-                    to={item === 'Home' ? '/' : `/${item.toLowerCase().replace(' ', '-')}`}
+                    to={item === 'Home' ? '/' : item === 'Shop' ? '/products' : item === 'Services' ? '/services' : `/${item.toLowerCase().replace(' ', '-')}`}
                     className="px-4 py-2 text-slate-700 hover:text-cyan-600 font-medium transition-all duration-300 rounded-lg hover:bg-slate-50"
                   >
                     {item}
@@ -185,7 +187,7 @@ function App() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
               <div className="flex items-center gap-4">
                 {/* Department Button */}
-                <button className="flex items-center justify-center space-x-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-6 py-3.5 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl min-w-[200px] group">
+                <Link to="/products" className="flex items-center justify-center space-x-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-6 py-3.5 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl min-w-[200px] group">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h7" />
                   </svg>
@@ -193,7 +195,7 @@ function App() {
                   <svg className="w-4 h-4 transform group-hover:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
-                </button>
+                </Link>
 
                 {/* Search Input */}
                 <div className="flex-1 flex items-center bg-white rounded-xl overflow-hidden shadow-lg">
@@ -249,6 +251,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/products" element={<Products addToCart={addToCart} />} />
+            <Route path="/products/:id" element={<ProductDetail addToCart={addToCart} />} />
+            
             <Route 
               path="/cart" 
               element={
@@ -316,7 +320,7 @@ function App() {
                   Quick Links
                 </h3>
                 <ul className="space-y-4">
-                  {['Products', 'Categories', 'About Us', 'Contact', 'FAQs', 'Terms'].map((link, index) => (
+                  {['Products', 'Services', 'About Us', 'Contact', 'FAQs', 'Terms'].map((link, index) => (
                     <li key={index}>
                       <Link 
                         to={`/${link.toLowerCase().replace(' ', '-')}`}

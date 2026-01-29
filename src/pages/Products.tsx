@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import type { Product } from '../App'
 
 interface ProductsProps {
@@ -196,7 +197,7 @@ function Products({ addToCart }: ProductsProps) {
               key={product.id} 
               className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group"
             >
-              <div className="p-6">
+              <Link to={`/products/${product.id}`} className="block p-6">
                 <div className="text-6xl mb-4 text-center group-hover:scale-110 transition-transform duration-300">
                   {product.image}
                 </div>
@@ -207,7 +208,7 @@ function Products({ addToCart }: ProductsProps) {
                   </span>
                 </div>
                 
-                <h3 className="text-lg font-bold text-gray-900 mb-2 line-clamp-2">
+                <h3 className="text-lg font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-primary-600 transition-colors">
                   {product.name}
                 </h3>
                 
@@ -229,9 +230,14 @@ function Products({ addToCart }: ProductsProps) {
                     )}
                   </div>
                 </div>
-                
+              </Link>
+              
+              <div className="p-6 pt-0">
                 <button
-                  onClick={() => handleAddToCart(product)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleAddToCart(product);
+                  }}
                   disabled={product.stock === 0}
                   className={`w-full py-3 rounded-lg font-semibold transition-all ${
                     product.stock > 0

@@ -5,7 +5,7 @@ import Products from './pages/Products'
 import ProductDetail from './pages/ProductDetail'
 import Cart from './pages/Cart'
 import Location from './pages/Location'
-import Services from './pages/Services'
+
 
 export interface Product {
   id: number
